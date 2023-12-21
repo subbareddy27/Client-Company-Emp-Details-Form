@@ -1,0 +1,120 @@
+<div class="container mt-3 bg-success">
+    <br><br>
+    
+   <div class="form-bg">
+    <form [formGroup]="alldata" (ngSubmit)="_submitForm()">
+        <div class="card">
+            <div class="card-header bg-dark text-white text-center">
+                <h2>Client Details</h2>
+                <p>Enter the details of all incoming clients</p>
+            </div>
+            <div class="card-body">
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Client Name *" formControlName="firstname">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Company *" formControlName="lastname">
+                    </div>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="@Email.com *" formControlName="email">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Company Address *" formControlName="CompanyAddress">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Company Website *" formControlName="Companywebsite">
+                    </div>
+                    <div class="col">
+                        <input type="file" class="form-control" placeholder="Company Logo *" formControlName="CompanyLog">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Work Hours *" formControlName="workinghours">
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" placeholder="Working Days *" formControlName="workingday">
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col">
+                        <input type="date" class="form-control" placeholder="Billing Cycle *" formControlName="workingbilling">
+                    </div>
+                    <div class="col">
+                        <input type="time" class="form-control" placeholder="Working Time *" formControlName="workingtime">
+                    </div>
+                </div>
+            </div>
+            
+           
+            </div>
+          <div class="container ">
+            <div class="row mt-3 ">
+                <div class="col"  *ngIf="changer">
+                    <button class="btn btn-success btn-md"  (click)="SaveData()" type="button">Save</button>
+                </div>
+                <div class="col" *ngIf="!changer">
+                    <button class="btn btn-primary btn-md" [disabled]="!alldata.valid" type="submit">Submit</button>
+                </div>
+                <div class="col">
+                    <button class="btn btn-info btn-md" type="button" style="color: white;" (click)="_OnCancal()">Cancal</button>
+                </div>
+               </div>
+            </div>
+    </form>
+   </div>
+
+    <!-- {{arrayData | json}} -->
+</div>
+   
+<div class="container mt-2">
+    <h2 style="text-align: center;  background-color: gray; color: white;" >Client Details</h2>
+</div>
+<div class="container mt-3 bg-dark">
+ 
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+                <th>Company Address</th>
+                <th>CompanyLogo</th>
+                <th>Working Hours</th>
+                <th>Working Date</th>
+                <th>Billing Cycle</th>
+                <th>Working Time</th>
+                <th>Udate User Details</th>
+                <th>Delete User Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of arrayData ; let i = index">
+                <td>{{data.firstname}}</td>
+                <td>{{data.lastname}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.CompanyAddress}}</td>
+                <td>{{data.lastCompanyLogname}}</td>
+                <td>{{data.workinghours}}</td>
+                <td>{{data.workingdate}}</td>
+                <td>{{data.workingbilling}}</td>
+                <td>{{data.workingtime}}</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" type="button" (click)="OnEdite(i)">Update</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger btn-sm" type="button"  (click)="Ondelate(i)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
